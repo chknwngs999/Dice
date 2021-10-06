@@ -8,16 +8,8 @@ boolean tempgoing = true;
 //row/col shift
 //randomized
 
-//add support for various screen sizes
-//fix duplicate color/row bug at final rows/cols
-//fix margins
-int sizing = (int)(Math.random()*600)+301;
-int reps = sizing/25;
-int margin = (sizing-reps*25)/2;
-
-
 //scale size to screensize?
-color[] rowcolors = new color[reps];
+color[] rowcolors = new color   [20];
 
 int ones = 0, twos = 0, threes = 0, fours = 0, fives = 0, sixes = 0;
 int rolls = 0;
@@ -29,17 +21,11 @@ int ypos;
 
 color currentrow;
 
-void settings() {
-  size(sizing, sizing+60);
-}
-
 void setup()
 {
-  System.out.println(margin);
+  size(495, 555);
   for (int i = 0; i < rowcolors.length; i++)
     rowcolors[i] = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
-  if (margin < 5)
-    margin = 10;
 }
 void draw()
 {
@@ -52,9 +38,9 @@ void draw()
     rowcolors[rowcolors.length-1] = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
     background(50);
 
-    for (int i = margin; i < sizing; i += 25) {
+    for (int i = 10; i < 500; i += 25) {
       currentrow = rowcolors[(i-10)/25];
-      for (int j = margin; j < sizing; j += 25) {
+      for (int j = 10; j < 500; j += 25) {
         if (rowcol) {
           xpos = i;
           ypos = j;
@@ -84,15 +70,15 @@ void draw()
     }
     fill(255);
     average = (double)total / (double)rolls;
-    text("Total: " + total, 10, sizing+10);
-    text("Rolls: " + rolls, 10, sizing+30);
-    text("Avg: " + average, 10, sizing+50);
-    text("Ones: " + ones, 200, sizing+10);
-    text("Twos: " + twos, 200, sizing+30);
-    text("Threes: " + threes, 200, sizing+50);
-    text("Fours: " + fours, 350, sizing+10);
-    text("Fives: " + fives, 350, sizing+30);
-    text("Sixes: " + sixes, 350, sizing+50);
+    text("Total: " + total, 10, 510);
+    text("Rolls: " + rolls, 10, 530);
+    text("Avg: " + average, 10, 550);
+    text("Ones: " + ones, 200, 510);
+    text("Twos: " + twos, 200, 530);
+    text("Threes: " + threes, 200, 550);
+    text("Fours: " + fours, 350, 510);
+    text("Fives: " + fives, 350, 530);
+    text("Sixes: " + sixes, 350, 550);
   }
 }
 void mousePressed()
